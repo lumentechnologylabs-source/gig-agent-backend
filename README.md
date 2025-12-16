@@ -11,7 +11,13 @@ python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\acti
 pip install -r requirements.txt
 
 # Copy and edit your settings
+# Copy and edit your settings
+
+# macOS / Linux
 cp .env.example .env
+
+# Windows (PowerShell)
+copy .env.example .env';
 
 # Run once from the CLI
 python -m gig_agent.cli --limit 25 --out gigs.json
