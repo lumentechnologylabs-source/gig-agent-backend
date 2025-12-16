@@ -1,0 +1,40 @@
+{
+  "profile_name": "cindy",
+
+  "titles_include": [
+    "email marketing",
+    "marketing strategist",
+    "copywriter"
+  ],
+
+  "keywords_must_have": [
+    "remote",
+    "email marketing"
+  ],
+
+  "keywords_nice_to_have": [
+    "B2B",
+    "HubSpot",
+    "lifecycle",
+    "automation",
+    "analytics"
+  ],
+
+  "keywords_avoid": [
+    "unpaid",
+    "commission only",
+    "door to door",
+    "crypto"
+  ],
+
+  "remote_only": true,
+  "locations_preferred": ["US", "North America"],
+  "max_hours_per_week": 30,
+
+  "min_hourly_rate": 30,
+  "min_annual_salary": 60000,
+
+  "preferred_seniority": ["mid", "senior"],
+
+  "notes": "Soft-life, remote-friendly, sustainable hours."
+}

@@ -1,0 +1,9 @@
+﻿{
+  "name": "Gig Agent",
+  "id": "gig_agent",
+  "version": "0.2.0",
+  "description": "Fetches remote gigs from multiple sources, dedupes, and ranks them.",
+  "entry_point": "gig_agent.cli:main",
+  "env_file": "agents/gig_agent/.env",
+  "args_default": ["--limit","25","--out","gigs.json"]
+}
