@@ -4,7 +4,8 @@ from typing import Optional, List, Dict
 
 from pydantic import BaseModel
 
-from app.providers.remoteok import fetch_remoteok_jobs
+from app.providers.remoteok_jobs import fetch_remoteok_jobs
+from app.providers.wwr_jobs import fetch_wwr_jobs
 from app.core.scoring import score_gig
 
 print("🚀 Loaded API from C:\\dev\\gig_agent\\app\\api.py")
@@ -113,8 +114,30 @@ async def run_gig_search(user_config: dict, limit: int = 10):
     print("LIMIT:", limit)
 
     # 1) Fetch raw gigs from RemoteOK
-    raw_gigs = await fetch_remoteok_jobs()
-    print("RAW GIGS FETCHED:", len(raw_gigs))
+    raw_remoteok: List[dict] = []
+    raw_wwr: List[dict] = []
+
+    try:
+        raw_remoteok = await fetch_remoteok_jobs(limit=50)
+    except Exception as e:
+        print("RemoteOK fetch failed:", e)
+
+    try:
+        raw_wwr = await fetch_wwr_jobs(limit=50)
+    except Exception as e:
+        print("WWR fetch failed:", e)
+
+    raw_gigs = raw_remoteok + raw_wwr
+    print(
+        "RAW GIGS FETCHED:",
+        len(raw_gigs),
+        "(remoteok:",
+        len(raw_remoteok),
+        "wwr:",
+        len(raw_wwr),
+        ")",
+    )
+
 
     # 2) Filter based on disqualifiers (hard filter only)
     filtered_gigs: List[dict] = []
